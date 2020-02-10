@@ -1,9 +1,14 @@
 import React from 'react';
-import styled from 'styled-components';
+// import{
+//   StyledHeader,
+//   StyledHeaderText
+// } from './TopStyling'
+import moment from 'moment'
+import styled from "styled-components";
 
 // Refactor this component to use styled components and not classNames. 
 // You can find the corresponding CSS in the CSS/index.css file
-const WrapperDiv = styled.div`
+const StyledHeader = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -12,40 +17,39 @@ const WrapperDiv = styled.div`
   border-bottom: 1px solid lightgrey;
   width: 100%;
   height: 120px;
-  margin-top: 44px;
+  margin: 44px auto;
   padding-bottom: 15px;
   @media (min-width: 1280px) {
-      width: 1280px;
-    }
+    width: 1280px;
+  }
+  h1 {
+    font-size: 60px;
+    font-family: Didot, serif;
+    font-weight: bold;
+    flex: 8;
+    text-align: center;
+    color: #000;
+  }
 `;
 
-const DateSpan = styled.span`
-  margin-left: 25px;
-  flex: 1;
-`;
-
-const TempSpan = styled.span`
-  text-align: right;
-  margin-right: 25px;
-  flex: 1;
-`;
-
-const WrapH1 = styled.h1`
-  font-size: 60px;
-  font-family: Didot, serif;
+const StyledHeaderText = styled.span`
+  align-self: flex-end;
+  font-size: 11px;
   font-weight: bold;
-  flex: 8;
-  text-align: center;
-  color: #000;
-`;
+  letter-spacing: 1px;
+  flex: 1;
+  ${props => (props.timeStamp ? `margin-left: 35px` : null)}
+  `
 
 const Header = () => {
   return (
-     <WrapperDiv>
-      <DateSpan>MARCH 23, 2019</DateSpan>
-      <WrapH1>Lambda Times</WrapH1>
-      <TempSpan>71°</TempSpan>
-    </WrapperDiv>
+    
+      
+    <StyledHeader>
+      <StyledHeaderText timeStamp>:Last Update: <br></br><br></br>{moment().format('MMM DD YYYY, h:mm A')}</StyledHeaderText>
+      <h1>Lambda Times</h1>
+      <StyledHeaderText temp>98°</StyledHeaderText>
+    </StyledHeader>
   )
 }
 

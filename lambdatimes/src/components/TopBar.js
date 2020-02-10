@@ -1,9 +1,9 @@
 import React from 'react';
-import styled from 'styled-components';
 
+import styled from "styled-components";
 // Refactor this component to use styled components and not classNames. 
 // You can find the corresponding CSS in the CSS/index.css file
-const WrapperTopBarDiv = styled.div`
+const StyledTopBar = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;
@@ -12,6 +12,7 @@ const WrapperTopBarDiv = styled.div`
   position: fixed;
   height: 44px;
   background-color: #333;
+  
 `;
 
 const TopBarContainer = styled.div`
@@ -24,45 +25,44 @@ const TopBarContainer = styled.div`
   letter-spacing: 1px;
   padding: 0 10px;
   @media (min-width: 1280px) {
-      width: 1280px;
-    }
+    width: 1280px;
+  }
 `;
 
-const TopBarContainerLeft = styled.div`
+const ContainerLeft = styled.div`
   display: flex;
   justify-content: none;
   align-items: center;
   flex-direction: row;
   flex: 1;
-  font-size: 11px; 
+  font-size: 11px;
+  span {
+    cursor: pointer;
+    margin-right: 25%;
+    font-weight: bold;
+  }
 `;
 
-const TopBarContainerLeftSpan = styled.span`
-  cursor: pointer;
-  margin-right: 25%;
-  font-weight: bold; 
-`;
-
-const TopBarContainerCenter = styled.div`
+const ContainerCenter = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
   flex: 3;
   font-size: 9px;
-`;
-
-const TopBarContainerCenterSpan = styled.span`
-  cursor: pointer;
-  margin-right: 5%;
-  &:hover {
+  span {
+    cursor: pointer;
+    margin-right: 5%;
+  }
+  span:last-child {
+    margin-right: 0;
+  }
+  span:hover {
     text-decoration: underline;
   }
-  &:last-child {margin-right: 0;
-  }
 `;
 
-const TopBarContainerRight = styled.div`
+const ContainerRight = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -70,28 +70,31 @@ const TopBarContainerRight = styled.div`
   flex: 1;
   font-size: 11px;
   font-weight: bold;
+  span {
+    cursor: pointer;
+  }
 `;
-
-const TopBarContainerRightSpan = styled.span`
-  cursor: pointer; 
-`;
-
 const TopBar = () => {
   return (
-    <WrapperTopBarDiv>
+   
+    <StyledTopBar>
       <TopBarContainer>
-        <TopBarContainerLeft>
-          <TopBarContainerLeftSpan>TOPICS</TopBarContainerLeftSpan><TopBarContainerLeftSpan>SEARCH</TopBarContainerLeftSpan>
-        </TopBarContainerLeft>
-        <TopBarContainerCenter >
-          <TopBarContainerCenterSpan>GENERAL</TopBarContainerCenterSpan><TopBarContainerCenterSpan>BROWNBAG</TopBarContainerCenterSpan><TopBarContainerCenterSpan>RANDOM</TopBarContainerCenterSpan><TopBarContainerCenterSpan>MUSIC</TopBarContainerCenterSpan><TopBarContainerCenterSpan>ANNOUNCEMENTS</TopBarContainerCenterSpan>
-        </TopBarContainerCenter >
-        <TopBarContainerRight>
-          <TopBarContainerRightSpan>LOG IN</TopBarContainerRightSpan>
-        </TopBarContainerRight>
+        <ContainerLeft>
+          <span>TOPICS</span><span>SEARCH</span>
+     
+        </ContainerLeft>
+        <ContainerCenter>
+          <span>GENERAL</span><span>BROWNBAG</span><span>RANDOM</span><span>MUSIC</span><span>ANNOUNCEMENTS</span>
+        
+          <span>LOG IN</span>
+    
+        </ContainerCenter>
+        <ContainerRight>
+          <span onClick={() => {localStorage.removeItem('user'); window.location.reload()}}>LOG IN</span>
+        </ContainerRight>
       </TopBarContainer>
-    </WrapperTopBarDiv>
+    </StyledTopBar>
   )
 }
 
-export default TopBar;
+export default TopBar
