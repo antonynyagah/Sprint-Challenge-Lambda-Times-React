@@ -5,6 +5,33 @@
     <title>Lambda Times</title>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root">
+      <script type="text/javascript">
+        // 86acbd31cd7c09cf30acb66d2fbedc91daa48b86:1608740954.317088
+        !function(n,r,e,t,c){var i,o="Promise"in n,u={then:function(){return u},catch:function(n){
+        return n(new Error("Airship SDK Error: Unsupported browser")),u}},s=o?new Promise((function(n,r){i=function(e,t){e?r(e):n(t)}})):u
+        ;s._async_setup=function(n){if(o)try{i(null,n(c))}catch(n){i(n)}},n[t]=s;var a=r.createElement("script");a.src=e,a.async=!0,a.id="_uasdk",
+        a.rel=t,r.head.appendChild(a)}(window,document,'https://aswpsdkus.com/notify/v1/ua-sdk.min.js',
+          'UA', {
+            vapidPublicKey: 'BAjT-2hQmRfQm4PojOiQLPQfTjsoOhWbumskxEd1VU_gMfcX_kGKBW6dzKq3_6D7fWIqXNjvSbAJhpepJsRoiKQ=',
+            appKey: 'zNLA9iRVRWSAugoWcR8bgw',
+            token: 'MTp6TkxBOWlSVlJXU0F1Z29XY1I4Ymd3OlhSUFpkM05ISWNfb1ZoU2pwMFNUSUZoYk5PTGR4ZkZPMDlXTkYtZjBoYUE'
+          });
+        
+        </script>
+        <script>
+          if ('serviceWorker' in navigator) {
+  window.addEventListener('load', function() {
+    navigator.serviceWorker.register('/push-worker.js').then(function(registration) {
+      // Registration was successful
+      console.log('ServiceWorker registration successful with scope: ', registration.scope);
+    }, function(err) {
+      // registration failed :(
+      console.log('ServiceWorker registration failed: ', err);
+    });
+  });
+}
+        </script>
+    </div>
   </body>
 </html>
